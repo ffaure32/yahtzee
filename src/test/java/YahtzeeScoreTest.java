@@ -206,4 +206,57 @@ public class YahtzeeScoreTest {
         assertThat(result).isEqualTo(0);
 
     }
+
+    @Test
+    public void test_figure_yahtzee() {
+        // ARRANGE
+        Roll roll = new Roll(2, 2, 2, 2, 2);
+
+        // ACT
+        long result = score.compute(roll, new YahtzeeCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(50);
+
+    }
+
+    @Test
+    public void test_figure_yahtzee_wrong() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 4, 3, 6);
+
+        // ACT
+        long result = score.compute(roll, new YahtzeeCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(0);
+
+    }
+
+    @Test
+    public void test_lucky_minimal() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 1, 1, 1);
+
+        // ACT
+        long result = score.compute(roll, new LuckyCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(6);
+
+    }
+
+    @Test
+    public void test_lucky_max() {
+        // ARRANGE
+        Roll roll = new Roll(6, 6, 6, 5, 6);
+
+        // ACT
+        long result = score.compute(roll, new LuckyCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(29);
+
+    }
+
 }
