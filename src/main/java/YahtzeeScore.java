@@ -4,7 +4,4 @@ public class YahtzeeScore {
         return category.score(roll);
     }
 
-    public long compute(Roll roll, CategoryLegacy category) {
-        return category.compute(roll);
-    }
 }

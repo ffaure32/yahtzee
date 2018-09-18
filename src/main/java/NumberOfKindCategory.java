@@ -26,11 +26,5 @@ public abstract class NumberOfKindCategory implements Category {
             .max().orElse(0L);
     }
 
-    private Map<Integer, Long> dicesByNumber(Roll roll) {
-        return Arrays.stream(roll.dices)
-            .mapToObj(Integer::valueOf)
-            .collect(groupingBy(Function.identity(), counting()));
-    }
-
     public abstract int getMinNumberOccurrences();
 }

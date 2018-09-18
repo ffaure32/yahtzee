@@ -115,4 +115,30 @@ public class YahtzeeScoreTest {
 
     }
 
+    @Test
+    public void test_figure_full() {
+        // ARRANGE
+        Roll roll = new Roll(2, 2, 2, 3, 3);
+
+        // ACT
+        long result = score.compute(roll, new FullCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(25);
+
+    }
+
+    @Test
+    public void test_figure_full_wrong() {
+        // ARRANGE
+        Roll roll = new Roll(2, 2, 1, 3, 3);
+
+        // ACT
+        long result = score.compute(roll, new FullCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(0);
+
+    }
+
 }
