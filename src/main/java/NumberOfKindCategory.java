@@ -1,9 +1,4 @@
-import static java.util.stream.Collectors.*;
-
 import java.util.Arrays;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public abstract class NumberOfKindCategory implements Category {
 
@@ -21,7 +16,7 @@ public abstract class NumberOfKindCategory implements Category {
     }
 
     private long maxOccurrencesOfSameDice(Roll roll) {
-        return dicesByNumber(roll)
+        return roll.dicesByNumber()
             .values().stream().mapToLong(v -> v)
             .max().orElse(0L);
     }

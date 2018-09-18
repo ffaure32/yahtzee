@@ -141,4 +141,69 @@ public class YahtzeeScoreTest {
 
     }
 
+    @Test
+    public void test_figure_small_straight() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 4, 3, 6);
+
+        // ACT
+        long result = score.compute(roll, new SmallStraightCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(30);
+
+    }
+
+    @Test
+    public void test_figure_small_straight_wrong() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 5, 3, 6);
+
+        // ACT
+        long result = score.compute(roll, new SmallStraightCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(0);
+
+    }
+
+    @Test
+    public void test_figure_small_straight_with_big_straight() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 4, 3, 5);
+
+        // ACT
+        long result = score.compute(roll, new SmallStraightCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(30);
+
+    }
+
+
+    @Test
+    public void test_figure_big_straight() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 4, 3, 5);
+
+        // ACT
+        long result = score.compute(roll, new BigStraightCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(40);
+
+    }
+
+    @Test
+    public void test_figure_big_straight_wrong() {
+        // ARRANGE
+        Roll roll = new Roll(1, 2, 4, 3, 6);
+
+        // ACT
+        long result = score.compute(roll, new BigStraightCategory());
+
+        // ASSERT
+        assertThat(result).isEqualTo(0);
+
+    }
 }

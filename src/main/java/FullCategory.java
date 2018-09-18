@@ -7,7 +7,7 @@ public class FullCategory extends FixedScoreCategory {
 
     @Override
     public long score(Roll roll) {
-        Map<Integer, Long> dicesByNumber = dicesByNumber(roll);
+        Map<Integer, Long> dicesByNumber = roll.dicesByNumber();
         if(dicesByNumber.values().contains(Long.valueOf(3))
             && dicesByNumber.values().contains(Long.valueOf(2))) {
             return FULL_SCORE;
@@ -22,7 +22,7 @@ public class FullCategory extends FixedScoreCategory {
 
     @Override
     public boolean verifyCondition(Roll roll) {
-        Collection<Long> dicesByNumber = dicesByNumber(roll).values();
+        Collection<Long> dicesByNumber = roll.dicesByNumber().values();
         return (dicesByNumber.contains(Long.valueOf(3))
             && dicesByNumber.contains(Long.valueOf(2)));
     }
