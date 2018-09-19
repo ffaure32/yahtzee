@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 
 public class Roll {
 
+    public static final int DICE_SIZE = 6;
+    public static final int NUMBER_OF_DICES = 5;
+
     public final int[] dices;
 
     public Roll(int ... dices) {
@@ -21,14 +24,14 @@ public class Roll {
 
     private void verifyDicesValues(int[] dices) {
         Arrays.stream(dices).forEach(i -> {
-            if(i<1 || i > 6) {
+            if(i<1 || i > DICE_SIZE) {
                 throw new IllegalArgumentException("dé invalide");
             }
         });
     }
 
     private void verifyDicesNumber(int[] dices) {
-        if(dices.length != 5) {
+        if(dices.length != NUMBER_OF_DICES) {
             throw new IllegalArgumentException("Un lancer doit comporter 5 dés");
         }
     }

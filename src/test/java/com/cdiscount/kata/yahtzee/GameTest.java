@@ -7,10 +7,10 @@ public class GameTest {
     @Test
     public void initRound() {
         // ARRANGE
-        Game round = new Game();
+        //Game round = new Game();
 
         // ACT
-        round.
+        //round.
 
         // ASSERT
 
