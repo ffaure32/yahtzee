@@ -30,11 +30,11 @@ public class UpperSectionTest {
         assertThat(acesScore.isPresent()).isTrue();
         assertThat(acesScore.get()).isEqualTo(3);
         assertThat(upperSection.total()).isEqualTo(3);
-        assertThat(upperSection.totalWithBonus()).isEqualTo(3);
+        assertThat(upperSection.totalWithBonus().isPresent()).isEqualTo(false);
     }
 
     @Test
-    public void fillAllNumbers() {
+    public void fillAllNumbersWithoutBonus() {
         UpperSection upperSection = new UpperSection();
 
         assertThat(upperSection.total()).isEqualTo(0);
@@ -45,7 +45,23 @@ public class UpperSectionTest {
         }
 
         assertThat(upperSection.total()).isEqualTo(8);
-        assertThat(upperSection.totalWithBonus()).isEqualTo(43);
+        assertThat(upperSection.totalWithBonus().get()).isEqualTo(8);
+    }
+
+    @Test
+    public void fillAllNumbersWithBonus() {
+        UpperSection upperSection = new UpperSection();
+
+        assertThat(upperSection.total()).isEqualTo(0);
+        int rollValue = 1;
+        for(UpperSectionCategory category : UpperSectionCategory.values()) {
+            Roll roll = new Roll(rollValue, rollValue, rollValue, rollValue, rollValue);
+            upperSection.apply(category, roll);
+            rollValue++;
+        }
+
+        assertThat(upperSection.total()).isEqualTo(105);
+        assertThat(upperSection.totalWithBonus().get()).isEqualTo(140);
     }
 
     @Test(expected=IllegalArgumentException.class)

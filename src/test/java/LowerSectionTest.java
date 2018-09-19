@@ -28,7 +28,7 @@ public class LowerSectionTest {
         assertThat(acesScore.isPresent()).isTrue();
         assertThat(acesScore.get()).isEqualTo(8);
         assertThat(lowerSection.total()).isEqualTo(8);
-        assertThat(lowerSection.totalWithBonus()).isEqualTo(8);
+        assertThat(lowerSection.totalWithBonus().isPresent()).isEqualTo(false);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class LowerSectionTest {
         }
 
         assertThat(lowerSection.total()).isEqualTo(39);
-        assertThat(lowerSection.totalWithBonus()).isEqualTo(139);
+        assertThat(lowerSection.totalWithBonus().get()).isEqualTo(139);
     }
 
 }

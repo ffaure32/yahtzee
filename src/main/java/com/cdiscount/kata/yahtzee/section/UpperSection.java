@@ -8,6 +8,10 @@ public class UpperSection extends Section {
 
     @Override
     public long getBonus() {
-        return 35;
+        if(total()>=63) {
+            return 35;
+        } else {
+            return 0;
+        }
     }
 }

@@ -27,19 +27,23 @@ public abstract class Section {
         rollsPerSection.put(section, Optional.of(section.score(roll)));
     }
 
-    public long total() {
+    public Long total() {
         return rollsPerSection.values()
             .stream()
             .map(o -> o.orElse(0L))
             .mapToLong(Long::longValue).sum();
     }
 
-    public long totalWithBonus() {
-        if (rollsPerSection.values().stream().filter(o -> !o.isPresent()).count() == 0) {
-            return total() + getBonus();
+    public Optional<Long> totalWithBonus() {
+        if (sectionTerminee()) {
+            return Optional.of(total() + getBonus());
         } else {
-            return total();
+            return Optional.empty();
         }
+    }
+
+    private boolean sectionTerminee() {
+        return rollsPerSection.values().stream().filter(o -> !o.isPresent()).count() == 0;
     }
 
     public abstract long getBonus();
