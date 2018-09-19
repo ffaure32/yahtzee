@@ -1,3 +1,7 @@
+package com.cdiscount.kata.yahtzee.category;
+
+import com.cdiscount.kata.yahtzee.Roll;
+
 public class YahtzeeCategory extends FixedScoreCategory {
 
     @Override

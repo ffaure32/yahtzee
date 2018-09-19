@@ -1,3 +1,8 @@
+package com.cdiscount.kata.yahtzee.category;
+
+import com.cdiscount.kata.yahtzee.Category;
+import com.cdiscount.kata.yahtzee.Roll;
+
 public abstract class FixedScoreCategory implements Category {
 
     public static final int DEFAULT_SCORE = 0;

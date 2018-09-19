@@ -1,10 +1,9 @@
-import java.util.Arrays;
-import java.util.HashSet;
+package com.cdiscount.kata.yahtzee.category;
+
+import com.cdiscount.kata.yahtzee.Roll;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class SmallStraightCategory extends FixedScoreCategory {
     private static final Set<Integer> SET1 = generateFourStraight(1);

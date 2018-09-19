@@ -1,5 +1,16 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.cdiscount.kata.yahtzee.Roll;
+import com.cdiscount.kata.yahtzee.category.BigStraightCategory;
+import com.cdiscount.kata.yahtzee.Category;
+import com.cdiscount.kata.yahtzee.category.FourOfAKindCategory;
+import com.cdiscount.kata.yahtzee.category.FullCategory;
+import com.cdiscount.kata.yahtzee.category.LuckyCategory;
+import com.cdiscount.kata.yahtzee.category.NumberCategory;
+import com.cdiscount.kata.yahtzee.category.SmallStraightCategory;
+import com.cdiscount.kata.yahtzee.category.ThreeOfAKindCategory;
+import com.cdiscount.kata.yahtzee.category.YahtzeeCategory;
+import com.cdiscount.kata.yahtzee.YahtzeeScore;
 import org.junit.Before;
 import org.junit.Test;
 

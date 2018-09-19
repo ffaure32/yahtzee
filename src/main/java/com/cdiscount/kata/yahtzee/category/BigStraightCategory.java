@@ -1,3 +1,6 @@
+package com.cdiscount.kata.yahtzee.category;
+
+import com.cdiscount.kata.yahtzee.Roll;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

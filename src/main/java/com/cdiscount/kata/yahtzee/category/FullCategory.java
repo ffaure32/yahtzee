@@ -1,19 +1,11 @@
+package com.cdiscount.kata.yahtzee.category;
+
+import com.cdiscount.kata.yahtzee.Roll;
 import java.util.Collection;
-import java.util.Map;
 
 public class FullCategory extends FixedScoreCategory {
 
     public static final int FULL_SCORE = 25;
-
-    @Override
-    public long score(Roll roll) {
-        Map<Integer, Long> dicesByNumber = roll.dicesByNumber();
-        if(dicesByNumber.values().contains(Long.valueOf(3))
-            && dicesByNumber.values().contains(Long.valueOf(2))) {
-            return FULL_SCORE;
-        }
-        return 0;
-    }
 
     @Override
     public int getFixedScore() {

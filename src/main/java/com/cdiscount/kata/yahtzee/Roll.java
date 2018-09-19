@@ -1,3 +1,5 @@
+package com.cdiscount.kata.yahtzee;
+
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
