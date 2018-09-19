@@ -14,7 +14,23 @@ public class Roll {
     public final int[] dices;
 
     public Roll(int ... dices) {
+        verifyDicesNumber(dices);
+        verifyDicesValues(dices);
         this.dices = dices;
+    }
+
+    private void verifyDicesValues(int[] dices) {
+        Arrays.stream(dices).forEach(i -> {
+            if(i<1 || i > 6) {
+                throw new IllegalArgumentException("dé invalide");
+            }
+        });
+    }
+
+    private void verifyDicesNumber(int[] dices) {
+        if(dices.length != 5) {
+            throw new IllegalArgumentException("Un lancer doit comporter 5 dés");
+        }
     }
 
     public Map<Integer, Long> dicesByNumber() {
