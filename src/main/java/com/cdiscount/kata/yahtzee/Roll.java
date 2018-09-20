@@ -25,14 +25,14 @@ public class Roll {
     private void verifyDicesValues(int[] dices) {
         Arrays.stream(dices).forEach(i -> {
             if(i<1 || i > DICE_SIZE) {
-                throw new IllegalArgumentException("dé invalide");
+                throw new YahtzeeException("dé invalide");
             }
         });
     }
 
     private void verifyDicesNumber(int[] dices) {
         if(dices.length != NUMBER_OF_DICES) {
-            throw new IllegalArgumentException("Un lancer doit comporter 5 dés");
+            throw new YahtzeeException("Un lancer doit comporter 5 dés");
         }
     }
 

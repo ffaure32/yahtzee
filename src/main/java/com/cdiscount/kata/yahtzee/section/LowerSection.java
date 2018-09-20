@@ -8,6 +8,6 @@ public class LowerSection extends Section {
 
     @Override
     public long getBonus() {
-        return 100;
+        return 0;
     }
 }

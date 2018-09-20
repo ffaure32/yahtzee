@@ -1,6 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.cdiscount.kata.yahtzee.Roll;
+import com.cdiscount.kata.yahtzee.YahtzeeException;
 import com.cdiscount.kata.yahtzee.section.LowerSectionCategory;
 import com.cdiscount.kata.yahtzee.section.UpperSection;
 import com.cdiscount.kata.yahtzee.section.UpperSectionCategory;
@@ -64,7 +65,7 @@ public class UpperSectionTest {
         assertThat(upperSection.totalWithBonus().get()).isEqualTo(140);
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected=YahtzeeException.class)
     public void applyWrongCategoryForSection() {
         UpperSection upperSection = new UpperSection();
 

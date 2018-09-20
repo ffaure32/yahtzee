@@ -1,6 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.cdiscount.kata.yahtzee.Roll;
+import com.cdiscount.kata.yahtzee.YahtzeeException;
 import com.cdiscount.kata.yahtzee.section.LowerSection;
 import com.cdiscount.kata.yahtzee.section.LowerSectionCategory;
 import java.util.Optional;
@@ -42,7 +43,17 @@ public class LowerSectionTest {
         }
 
         assertThat(lowerSection.total()).isEqualTo(39);
-        assertThat(lowerSection.totalWithBonus().get()).isEqualTo(139);
+        assertThat(lowerSection.totalWithBonus().get()).isEqualTo(39);
     }
 
+    @Test(expected = YahtzeeException.class)
+    public void figureAlreadyOccupied() {
+        // ARRANGE
+        LowerSection lowerSection = new LowerSection();
+        Roll roll = new Roll(1, 2, 1, 2, 1);
+        lowerSection.apply(LowerSectionCategory.THREE_OF_A_KIND, roll);
+
+        // ACT
+        lowerSection.apply(LowerSectionCategory.THREE_OF_A_KIND, roll);
+    }
 }

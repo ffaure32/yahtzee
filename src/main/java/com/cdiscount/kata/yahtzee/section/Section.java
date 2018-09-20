@@ -2,6 +2,7 @@ package com.cdiscount.kata.yahtzee.section;
 
 import com.cdiscount.kata.yahtzee.Roll;
 import com.cdiscount.kata.yahtzee.Category;
+import com.cdiscount.kata.yahtzee.YahtzeeException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,10 +22,25 @@ public abstract class Section {
     }
 
     public void apply(Category section, Roll roll) {
-        if(!rollsPerSection.keySet().contains(section)) {
-            throw new IllegalArgumentException("La catégorie n'est pas valable pour cette section");
-        }
+        checkPreconditions(section);
         rollsPerSection.put(section, Optional.of(section.score(roll)));
+    }
+
+    private void checkPreconditions(Category section) {
+        verifyValidSection(section);
+        verifyFreeCategory(section);
+    }
+
+    private void verifyFreeCategory(Category section) {
+        if(rollsPerSection.get(section).isPresent()) {
+            throw new YahtzeeException("La catégorie est déjà validée");
+        }
+    }
+
+    private void verifyValidSection(Category section) {
+        if(!rollsPerSection.keySet().contains(section)) {
+            throw new YahtzeeException("La catégorie n'est pas valable pour cette section");
+        }
     }
 
     public Long total() {
