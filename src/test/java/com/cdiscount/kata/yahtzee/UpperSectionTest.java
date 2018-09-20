@@ -1,3 +1,5 @@
+package com.cdiscount.kata.yahtzee;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.cdiscount.kata.yahtzee.Roll;

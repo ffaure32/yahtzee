@@ -1,7 +1,7 @@
+package com.cdiscount.kata.yahtzee;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.cdiscount.kata.yahtzee.Roll;
-import com.cdiscount.kata.yahtzee.YahtzeeException;
 import com.cdiscount.kata.yahtzee.section.LowerSection;
 import com.cdiscount.kata.yahtzee.section.LowerSectionCategory;
 import java.util.Optional;
