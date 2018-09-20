@@ -23,7 +23,14 @@ public abstract class Section {
 
     public void apply(Category section, Roll roll) {
         checkPreconditions(section);
+        specialBonus(section, roll);
         rollsPerSection.put(section, Optional.of(section.score(roll)));
+    }
+
+    protected abstract void specialBonus(Category section, Roll roll);
+
+    protected Optional<Long> getRollPerSection(Category category) {
+        return rollsPerSection.get(category);
     }
 
     private void checkPreconditions(Category section) {

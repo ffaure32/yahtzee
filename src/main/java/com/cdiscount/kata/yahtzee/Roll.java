@@ -48,4 +48,8 @@ public class Roll {
             .sorted()
             .collect(Collectors.toSet());
     }
+
+    public boolean isYahtzee() {
+        return distinctDices().size() == 1;
+    }
 }

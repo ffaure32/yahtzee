@@ -8,6 +8,7 @@ import com.cdiscount.kata.yahtzee.category.FullCategory;
 import com.cdiscount.kata.yahtzee.category.LuckyCategory;
 import com.cdiscount.kata.yahtzee.category.SmallStraightCategory;
 import com.cdiscount.kata.yahtzee.category.ThreeOfAKindCategory;
+import com.cdiscount.kata.yahtzee.category.YahtzeeCategory;
 
 public enum LowerSectionCategory implements Category {
     THREE_OF_A_KIND(new ThreeOfAKindCategory()),
@@ -15,6 +16,7 @@ public enum LowerSectionCategory implements Category {
     FULL_HOUSE(new FullCategory()),
     SMALL_STRAIGHT(new SmallStraightCategory()),
     BIG_STRAIGHT(new BigStraightCategory()),
+    YAHTZEE(new YahtzeeCategory()),
     LUCKY(new LuckyCategory());
 
     private final Category category;

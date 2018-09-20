@@ -11,6 +11,6 @@ public class YahtzeeCategory extends FixedScoreCategory {
 
     @Override
     public boolean verifyCondition(Roll roll) {
-        return roll.distinctDices().size() == 1;
+        return roll.isYahtzee();
     }
 }
