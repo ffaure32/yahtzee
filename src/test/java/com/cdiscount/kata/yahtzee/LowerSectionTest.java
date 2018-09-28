@@ -52,7 +52,7 @@ public class LowerSectionTest {
 
     @Test
     public void oneYahtzeeBonus() {
-        Roll yahtzee = new Roll(2, 2, 2, 2, 2);
+        Roll yahtzee = Roll.newYahtzee(2);
         lowerSection.apply(LowerSectionCategory.YAHTZEE, yahtzee);
         Roll missedRoll = new Roll(1, 2, 1, 2, 3);
         lowerSection.apply(LowerSectionCategory.THREE_OF_A_KIND, missedRoll);
@@ -69,7 +69,7 @@ public class LowerSectionTest {
 
     @Test
     public void oneYahtzeeWithYahtzeeCategoryMissed() {
-        Roll yahtzee = new Roll(2, 2, 2, 2, 2);
+        Roll yahtzee = Roll.newYahtzee(2);
         Roll missedRoll = new Roll(1, 2, 1, 2, 3);
         lowerSection.apply(LowerSectionCategory.YAHTZEE, missedRoll);
         lowerSection.apply(LowerSectionCategory.THREE_OF_A_KIND, missedRoll);
@@ -86,7 +86,7 @@ public class LowerSectionTest {
 
     @Test
     public void twoYahtzeeBonus() {
-        Roll yahtzee = new Roll(2, 2, 2, 2, 2);
+        Roll yahtzee = Roll.newYahtzee(2);
         lowerSection.apply(LowerSectionCategory.YAHTZEE, yahtzee);
         Roll missedRoll = new Roll(1, 2, 1, 2, 3);
         lowerSection.apply(LowerSectionCategory.FOUR_OF_A_KIND, missedRoll);

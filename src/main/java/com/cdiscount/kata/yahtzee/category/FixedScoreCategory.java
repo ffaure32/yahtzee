@@ -15,7 +15,7 @@ public abstract class FixedScoreCategory implements Category {
         return DEFAULT_SCORE;
     }
 
-    public abstract int getFixedScore();
+    protected abstract int getFixedScore();
 
-    public abstract boolean verifyCondition(Roll roll);
+    protected abstract boolean verifyCondition(Roll roll);
 }

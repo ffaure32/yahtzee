@@ -19,7 +19,7 @@ public class LowerSection extends Section {
     }
 
     private boolean yahtzeeAlreadyRealized() {
-        Optional<Long> yahtzeeRoll = getRollPerSection(LowerSectionCategory.YAHTZEE);
+        Optional<Long> yahtzeeRoll = getScore(LowerSectionCategory.YAHTZEE);
         return yahtzeeRoll.orElse(0L) > 0L;
     }
 

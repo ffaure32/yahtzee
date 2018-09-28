@@ -23,7 +23,7 @@ public class SmallStraightCategory extends FixedScoreCategory {
             || set.containsAll(SET3);
     }
 
-    public static Set<Integer> generateFourStraight(int start) {
-        return IntStream.range(start, start+4).mapToObj(Integer::new).collect(Collectors.toSet());
+    private static Set<Integer> generateFourStraight(int start) {
+        return IntStream.range(start, start+4).boxed().collect(Collectors.toSet());
     }
 }

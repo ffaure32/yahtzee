@@ -10,13 +10,13 @@ import java.util.Optional;
 
 public abstract class Section {
 
-    private Map<Category, Optional<Long>> rollsPerSection = new HashMap<>();
+    private final Map<Category, Optional<Long>> rollsPerSection = new HashMap<>();
 
     public Section(Category[] categories) {
         Arrays.stream(categories)
             .forEach(category -> rollsPerSection.put(category, Optional.empty()));
-
     }
+
     public Optional<Long> getScore(Category category) {
         return rollsPerSection.get(category);
     }
@@ -28,10 +28,6 @@ public abstract class Section {
     }
 
     protected abstract void specialBonus(Category section, Roll roll);
-
-    protected Optional<Long> getRollPerSection(Category category) {
-        return rollsPerSection.get(category);
-    }
 
     private void checkPreconditions(Category section) {
         verifyValidSection(section);
@@ -69,5 +65,5 @@ public abstract class Section {
         return rollsPerSection.values().stream().filter(o -> !o.isPresent()).count() == 0;
     }
 
-    public abstract long getBonus();
+    protected abstract long getBonus();
 }

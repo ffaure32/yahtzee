@@ -2,8 +2,6 @@ package com.cdiscount.kata.yahtzee;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.cdiscount.kata.yahtzee.Roll;
-import com.cdiscount.kata.yahtzee.YahtzeeException;
 import com.cdiscount.kata.yahtzee.section.LowerSectionCategory;
 import com.cdiscount.kata.yahtzee.section.UpperSection;
 import com.cdiscount.kata.yahtzee.section.UpperSectionCategory;
@@ -56,7 +54,7 @@ public class UpperSectionTest {
     public void fillAllNumbersWithBonus() {
         int rollValue = 1;
         for(UpperSectionCategory category : UpperSectionCategory.values()) {
-            Roll roll = new Roll(rollValue, rollValue, rollValue, rollValue, rollValue);
+            Roll roll = Roll.newYahtzee(rollValue);
             upperSection.apply(category, roll);
             rollValue++;
         }

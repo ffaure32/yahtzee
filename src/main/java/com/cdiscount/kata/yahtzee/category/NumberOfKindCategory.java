@@ -14,7 +14,7 @@ public abstract class NumberOfKindCategory implements Category {
         return 0L;
     }
 
-    public boolean checkValidCategory(Roll roll) {
+    private boolean checkValidCategory(Roll roll) {
         return maxOccurrencesOfSameDice(roll)
             >= getMinNumberOccurrences();
     }
@@ -25,5 +25,5 @@ public abstract class NumberOfKindCategory implements Category {
             .max().orElse(0L);
     }
 
-    public abstract int getMinNumberOccurrences();
+    protected abstract int getMinNumberOccurrences();
 }

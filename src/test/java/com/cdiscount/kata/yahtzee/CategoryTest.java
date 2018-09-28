@@ -16,7 +16,7 @@ public class CategoryTest {
 
     @Test
     public void test_all_ones() {
-        Roll roll = new Roll(1, 1, 1, 1, 1);
+        Roll roll = Roll.newYahtzee(1);
 
         Category ones = new NumberCategory(1);
         long result =  ones.score(roll);
@@ -212,7 +212,7 @@ public class CategoryTest {
     @Test
     public void test_figure_yahtzee() {
         // ARRANGE
-        Roll roll = new Roll(2, 2, 2, 2, 2);
+        Roll roll = Roll.newYahtzee(2);
 
         // ACT
         long result =  new YahtzeeCategory().score(roll);

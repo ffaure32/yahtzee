@@ -22,7 +22,7 @@ public class BigStraightCategory extends FixedScoreCategory {
             || set.containsAll(SET2);
     }
 
-    public static Set<Integer> generateFiveStraight(int start) {
-        return IntStream.range(start, start + 5).mapToObj(Integer::new).collect(Collectors.toSet());
+    private static Set<Integer> generateFiveStraight(int start) {
+        return IntStream.range(start, start + 5).boxed().collect(Collectors.toSet());
     }
 }

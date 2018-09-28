@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Roll {
 
@@ -37,19 +38,26 @@ public class Roll {
     }
 
     public Map<Integer, Long> dicesByNumber() {
-        return Arrays.stream(dices)
-            .mapToObj(Integer::valueOf)
+        return getDicesStream()
             .collect(groupingBy(Function.identity(), counting()));
     }
 
     public Set<Integer> distinctDices() {
-        return Arrays.stream(dices)
-            .mapToObj(Integer::valueOf)
+        return getDicesStream()
             .sorted()
             .collect(Collectors.toSet());
     }
 
+    private Stream<Integer> getDicesStream() {
+        return Arrays.stream(dices)
+            .boxed();
+    }
+
     public boolean isYahtzee() {
         return distinctDices().size() == 1;
+    }
+
+    public static Roll newYahtzee(int dice) {
+        return new Roll(dice, dice, dice, dice, dice);
     }
 }
