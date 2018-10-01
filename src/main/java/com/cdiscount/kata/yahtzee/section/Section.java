@@ -10,47 +10,46 @@ import java.util.Optional;
 
 public abstract class Section {
 
-    private final Map<Category, Optional<Long>> rollsPerSection = new HashMap<>();
+    private final Map<Category, Optional<Long>> scorePerCategory = new HashMap<>();
 
     public Section(Category[] categories) {
         Arrays.stream(categories)
-            .forEach(category -> rollsPerSection.put(category, Optional.empty()));
+            .forEach(category -> scorePerCategory.put(category, Optional.empty()));
     }
 
     public Optional<Long> getScore(Category category) {
-        return rollsPerSection.get(category);
+        return scorePerCategory.get(category);
     }
 
     public void apply(Category section, Roll roll) {
         checkPreconditions(section);
-        specialBonus(section, roll);
-        rollsPerSection.put(section, Optional.of(section.score(roll)));
+        scorePerCategory.put(section, Optional.of(section.score(roll)));
     }
 
-    protected abstract void specialBonus(Category section, Roll roll);
-
     private void checkPreconditions(Category section) {
-        verifyValidSection(section);
+        verifyValidCategory(section);
         verifyFreeCategory(section);
     }
 
     private void verifyFreeCategory(Category section) {
-        if(rollsPerSection.get(section).isPresent()) {
+        if(scorePerCategory.get(section).isPresent()) {
             throw new YahtzeeException("La catégorie est déjà validée");
         }
     }
 
-    private void verifyValidSection(Category section) {
-        if(!rollsPerSection.keySet().contains(section)) {
+    private void verifyValidCategory(Category section) {
+        if(!scorePerCategory.keySet().contains(section)) {
             throw new YahtzeeException("La catégorie n'est pas valable pour cette section");
         }
     }
 
     public Long total() {
-        return rollsPerSection.values()
+        long sectionTotalScore = scorePerCategory.values()
             .stream()
             .map(o -> o.orElse(0L))
             .mapToLong(Long::longValue).sum();
+
+        return sectionTotalScore ;
     }
 
     public Optional<Long> totalWithBonus() {
@@ -62,7 +61,7 @@ public abstract class Section {
     }
 
     private boolean sectionTerminee() {
-        return rollsPerSection.values().stream().filter(o -> !o.isPresent()).count() == 0;
+        return scorePerCategory.values().stream().filter(o -> !o.isPresent()).count() == 0;
     }
 
     protected abstract long getBonus();

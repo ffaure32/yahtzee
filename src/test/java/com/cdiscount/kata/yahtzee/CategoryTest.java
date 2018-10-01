@@ -261,4 +261,17 @@ public class CategoryTest {
 
     }
 
+    @Test
+    public void testYahtzeeUtiliseCommeJoker() {
+        // ARRANGE
+        Roll yahtzee = Roll.newYahtzee(5);
+
+        // ACT
+        long score = new BigStraightCategory().getFixedScore();
+
+        // ASSERT
+        assertThat(score).isEqualTo(40);
+
+    }
+
 }

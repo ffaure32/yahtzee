@@ -51,23 +51,6 @@ public class LowerSectionTest {
 
 
     @Test
-    public void oneYahtzeeBonus() {
-        Roll yahtzee = Roll.newYahtzee(2);
-        lowerSection.apply(LowerSectionCategory.YAHTZEE, yahtzee);
-        Roll missedRoll = new Roll(1, 2, 1, 2, 3);
-        lowerSection.apply(LowerSectionCategory.THREE_OF_A_KIND, missedRoll);
-        lowerSection.apply(LowerSectionCategory.FOUR_OF_A_KIND, missedRoll);
-        lowerSection.apply(LowerSectionCategory.FULL_HOUSE, missedRoll);
-        lowerSection.apply(LowerSectionCategory.SMALL_STRAIGHT, missedRoll);
-        lowerSection.apply(LowerSectionCategory.BIG_STRAIGHT, missedRoll);
-
-        lowerSection.apply(LowerSectionCategory.LUCKY, yahtzee);
-
-        assertThat(lowerSection.total()).isEqualTo(60);
-        assertThat(lowerSection.totalWithBonus().get()).isEqualTo(160);
-    }
-
-    @Test
     public void oneYahtzeeWithYahtzeeCategoryMissed() {
         Roll yahtzee = Roll.newYahtzee(2);
         Roll missedRoll = new Roll(1, 2, 1, 2, 3);
@@ -84,22 +67,6 @@ public class LowerSectionTest {
         assertThat(lowerSection.totalWithBonus().get()).isEqualTo(10);
     }
 
-    @Test
-    public void twoYahtzeeBonus() {
-        Roll yahtzee = Roll.newYahtzee(2);
-        lowerSection.apply(LowerSectionCategory.YAHTZEE, yahtzee);
-        Roll missedRoll = new Roll(1, 2, 1, 2, 3);
-        lowerSection.apply(LowerSectionCategory.FOUR_OF_A_KIND, missedRoll);
-        lowerSection.apply(LowerSectionCategory.FULL_HOUSE, missedRoll);
-        lowerSection.apply(LowerSectionCategory.SMALL_STRAIGHT, missedRoll);
-        lowerSection.apply(LowerSectionCategory.BIG_STRAIGHT, missedRoll);
-
-        lowerSection.apply(LowerSectionCategory.THREE_OF_A_KIND, yahtzee);
-        lowerSection.apply(LowerSectionCategory.LUCKY, yahtzee);
-
-        assertThat(lowerSection.total()).isEqualTo(70);
-        assertThat(lowerSection.totalWithBonus().get()).isEqualTo(270);
-    }
 
     @Test(expected = YahtzeeException.class)
     public void figureAlreadyOccupied() {
